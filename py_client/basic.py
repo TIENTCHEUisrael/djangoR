@@ -13,5 +13,5 @@ print(get_response.status_code)
 #Rest Api HTTP Request -> JSON
 # JavaScript Object Notation ~ Python Dictionnary
 
-#print(get_response.json()['message']) 
+print(get_response.json()) 
 #print(get_response.status_code)

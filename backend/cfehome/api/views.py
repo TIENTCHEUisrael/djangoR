@@ -3,6 +3,8 @@ from django.http import JsonResponse,HttpResponse
 import json
 from django.forms.models import model_to_dict
 from products.models import Product
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 
 def test(request,*args,**kwargs):
@@ -25,7 +27,7 @@ def test(request,*args,**kwargs):
     data['content_type']=request.content_type
     return JsonResponse(data)
 
-
+@api_view(["GET","POST"])
 def api_home(request,*args,**kwargs):
     model_data=Product.objects.all().order_by("?").first()
     data={}
@@ -34,4 +36,4 @@ def api_home(request,*args,**kwargs):
         #data['content']=model_data.content
         #data['price']=model_data.price
         data=model_to_dict(model_data,fields=['id','title','price'])
-    return JsonResponse(data)
+    return Response(data)

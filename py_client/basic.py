@@ -6,8 +6,8 @@ import requests
 endpoint="http://localhost:8000/api/"
 
 get_response=requests.get(endpoint,params={"product_id":123},json={"query":"Hello world"}) #HTTP request
-print(get_response.text) #print the raw text response
-print(get_response.status_code)
+#print(get_response.text) #print the raw text response
+#print(get_response.status_code)
 
 #HTTP Request -> HTML
 #Rest Api HTTP Request -> JSON

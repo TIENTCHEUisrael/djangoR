@@ -46,7 +46,8 @@ def api_home(request,*args,**kwargs):
         DRF API VIEWS
     """
     serializer=ProductSerializer(data=request.data)
-    if serializer.is_valid():
+    if serializer.is_valid(raise_exception=True):#Retournera l'erreur au niveau de la position ou il se trouvera
         print(serializer.data)
         data=serializer.data
         return Response(data)   
+    return Response({"invalid":"not good data"},status=400)
